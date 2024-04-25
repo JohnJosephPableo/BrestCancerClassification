@@ -7,10 +7,6 @@ from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
 model = load_model('./breastcancer_classification_model.h5')
 
-def convert_input_to_array(input_string):
-    input_array = np.array([float(x.strip()) for x in input_string.split(',')])
-    return input_array
-
 model.compile(optimizer='adam',
               loss='binary_crossentropy',
               metrics=['accuracy'])
@@ -68,39 +64,16 @@ input = np.array([radius_m,texture_m,perimeter_m,area_m,smoothness_m,compactness
                  radius_w,texture_w,perimeter_w,area_w,smoothness_w,compactness_w,concavity_w,concave_points_w,symmetry_w,fractal_dimension_w]) 
 
 
-input_data = st.text_input('Enter input data (comma-separated)', '(11.76,21.6,74.72,427.9,0.08637,0.04966,0.01657,0.01115,0.1495,0.05888,0.4062,1.21,2.635,28.47,0.005857,0.009758,0.01168,0.007445,0.02406,0.001769,12.98,25.72,82.98,516.5,0.1085,0.08615,0.05523,0.03715,0.2433,0.06563)')
-
 if st.button('Classify'):
-        try:
-            input_array = convert_input_to_array(input_data)
-            st.write('Input Data (as array):')
-            st.write(input_array)
-            input_data_reshaped = input_array.reshape(1,-1)
-            input_data_std = scaler.transform(input_data_reshaped)
-
-            prediction = model.predict(input_data_std)
-            print(prediction)
-
-            prediction_label = [np.argmax(prediction)]
-            print(prediction_label)
-
-            if(prediction_label[0] == 0):
-              print('The tumor is Malignant')
-
-            else:
-              print('The tumor is Benign')
-        except ValueError:
-            st.error('Invalid input format. Please enter comma-separated values.')
-
-
-
-# st.write(input)
-# if st.button('Classify'):
-#     prediction = model.predict(input_data_std)
-#     st.write(prediction)
-#     prediction_label = [np.argmax(prediction)]
-#     if(prediction_label == 0):
-#       st.write('The tumor is Malignant')
-#     else:
-#       st.write('The tumor is Benign')
-
+    scaler = StandardScaler()
+    input_data_reshaped = input.reshape(1,-1)
+    if not hasattr(scaler, 'mean_') or not hasattr(scaler, 'scale_'):
+      scaler.fit(input_data_reshaped)
+    input_data_std = scaler.transform(input_data_reshaped)
+    prediction = model.predict(input_data_std)
+    st.write(prediction)
+    prediction_label = [np.argmax(prediction)]
+    if(prediction_label == 0):
+      st.write('The tumor is Malignant')
+    else:
+      st.write('The tumor is Benign')
