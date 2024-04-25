@@ -6,6 +6,10 @@ from sklearn.preprocessing import StandardScaler
 
 scaler = StandardScaler()
 model = load_model('./breastcancer_classification_model.h5')
+
+model.compile(optimizer='adam',
+              loss='binary_crossentropy',
+              metrics=['accuracy'])
 min_value = np.float32(np.finfo(np.float32).min)  
 max_value = np.float32(np.finfo(np.float32).max) 
 
