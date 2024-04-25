@@ -63,9 +63,9 @@ input = np.array([radius_m,texture_m,perimeter_m,area_m,smoothness_m,compactness
                  radius_se,texture_se,perimeter_se,area_se,smoothness_se,compactness_se,concavity_se,concave_points_se,symmetry_se,fractal_dimension_se,
                  radius_w,texture_w,perimeter_w,area_w,smoothness_w,compactness_w,concavity_w,concave_points_w,symmetry_w,fractal_dimension_w]) 
 input_data_reshaped = input.reshape(1,-1)
-
+input_data_std = scaler.transform(input_data_reshaped)
 if st.button('Classify'):
-    prediction = model.predict(input_data_reshaped)
+    prediction = model.predict(input_data_std)
     st.write(prediction)
     prediction_label = [np.argmax(prediction)]
     if(prediction_label == 0):
