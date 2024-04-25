@@ -63,12 +63,12 @@ if st.button('Classify'):
     prediction = model.predict(input_data_std)
     st.write(prediction)
     prediction_label = [np.argmax(prediction)]
+    if(prediction_label[0] == 0):
+      st.write('The tumor is Malignant')
+    else:
+      st.write('The tumor is Benign')
 
-if(prediction_label[0] == 0):
-  st.write('The tumor is Malignant')
 
-else:
-  st.write('The tumor is Benign')
 
 
 
