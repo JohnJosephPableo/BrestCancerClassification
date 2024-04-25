@@ -4,7 +4,7 @@ import pickle
 from sklearn.preprocessing import StandardScaler
 
 scaler = StandardScaler()
-model=pickle.load(open('\BrestCancerClassification\BreastCancerKeras.ipynb','rb'))
+model=pickle.load(open('./breastcancer_classification_model.pkl','rb'))
 
 st.title("Breast Cancer Classification")
 
