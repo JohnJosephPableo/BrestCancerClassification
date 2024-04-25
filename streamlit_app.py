@@ -69,7 +69,3 @@ if st.button('Classify'):
       st.write('The tumor is Malignant')
     else:
       st.write('The tumor is Benign')
-
-if st.button('test'):
-   st.write("test")
-else:
