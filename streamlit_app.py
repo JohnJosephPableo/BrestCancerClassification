@@ -7,6 +7,10 @@ from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
 model = load_model('./breastcancer_classification_model.h5')
 
+def convert_input_to_array(input_string):
+    input_array = np.array([float(x.strip()) for x in input_string.split(',')])
+    return input_array
+
 model.compile(optimizer='adam',
               loss='binary_crossentropy',
               metrics=['accuracy'])
