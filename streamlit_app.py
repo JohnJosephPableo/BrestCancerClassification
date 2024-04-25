@@ -6,6 +6,8 @@ from sklearn.preprocessing import StandardScaler
 
 scaler = StandardScaler()
 model = load_model('./breastcancer_classification_model.h5')
+min_value = np.finfo(np.float32).min  
+max_value = np.finfo(np.float32).max  
 
 st.title("Breast Cancer Classification")
 
@@ -16,42 +18,42 @@ st.write("""
 st.write("""
             Mean
          """)
-radius_m = st.number_input('Enter the mean radius', value=0.0000000)
-texture_m = st.number_input('Enter the mean texture', value=0.0000000)
-perimeter_m = st.number_input('Enter the mean perimeter', value=0.0000000)
-area_m = st.number_input('Enter the mean area', value=0.0000000)
-smoothness_m = st.number_input('Enter the mean smoothness', value=0.0000000)
-compactness_m = st.number_input('Enter the mean compactness', value=0.0000000)
-concavity_m = st.number_input('Enter the mean concavity', value=0.0000000)
-concave_points_m = st.number_input('Enter the mean concave points', value=0.0000000)
-symmetry_m = st.number_input('Enter the mean symmetry', value=0.0000000)
-fractal_dimension_m = st.number_input('Enter the mean fractal dimension', value=0.0000000)
+radius_m = st.number_input('Enter the mean radius', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+texture_m = st.number_input('Enter the mean texture', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+perimeter_m = st.number_input('Enter the mean perimeter', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+area_m = st.number_input('Enter the mean area', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+smoothness_m = st.number_input('Enter the mean smoothness', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+compactness_m = st.number_input('Enter the mean compactness', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+concavity_m = st.number_input('Enter the mean concavity', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+concave_points_m = st.number_input('Enter the mean concave points', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+symmetry_m = st.number_input('Enter the mean symmetry', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+fractal_dimension_m = st.number_input('Enter the mean fractal dimension', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
 st.write("""
             Standard Error
          """)
-radius_se = st.number_input('Enter the standard error radius', value=0.0000000)
-texture_se = st.number_input('Enter the standard error texture', value=0.0000000)
-perimeter_se = st.number_input('Enter the standard error perimeter', value=0.0000000)
-area_se = st.number_input('Enter the standard error area', value=0.0000000)
-smoothness_se = st.number_input('Enter the standard error smoothness', value=0.0000000)
-compactness_se = st.number_input('Enter the standard error compactness', value=0.0000000)
-concavity_se = st.number_input('Enter the standard error concavity', value=0.0000000)
-concave_points_se = st.number_input('Enter a concave points', value=0.0000000)
-symmetry_se = st.number_input('Enter the standard error symmetry', value=0.0000000)
-fractal_dimension_se = st.number_input('Enter the standard error fractal dimension', value=0.0000000)
+radius_se = st.number_input('Enter the standard error radius', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+texture_se = st.number_input('Enter the standard error texture', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+perimeter_se = st.number_input('Enter the standard error perimeter', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+area_se = st.number_input('Enter the standard error area', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+smoothness_se = st.number_input('Enter the standard error smoothness', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+compactness_se = st.number_input('Enter the standard error compactness', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+concavity_se = st.number_input('Enter the standard error concavity', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+concave_points_se = st.number_input('Enter a concave points', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+symmetry_se = st.number_input('Enter the standard error symmetry', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+fractal_dimension_se = st.number_input('Enter the standard error fractal dimension', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
 st.write("""
             Worst
          """)
-radius_w = st.number_input('Enter the worst mean', value=0.0000000)
-texture_w = st.number_input('Enter the worst texture', value=0.0000000)
-perimeter_w = st.number_input('Enter the worst perimeter', value=0.0000000)
-area_w = st.number_input('Enter the worst area', value=0.0000000)
-smoothness_w = st.number_input('Enter the worst smoothness', value=0.0000000) 
-compactness_w = st.number_input('Enter the worst compactness', value=0.0000000)
-concavity_w = st.number_input('Enter the worst concavity', value=0.0000000)
-concave_points_w = st.number_input('Enter the worst concave points', value=0.0000000)
-symmetry_w = st.number_input('Enter the worst symmetry', value=0.0000000)
-fractal_dimension_w = st.number_input('Enter the worst fractal dimension', value=0.000000000)
+radius_w = st.number_input('Enter the worst mean', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+texture_w = st.number_input('Enter the worst texture', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+perimeter_w = st.number_input('Enter the worst perimeter', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+area_w = st.number_input('Enter the worst area', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+smoothness_w = st.number_input('Enter the worst smoothness', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f") 
+compactness_w = st.number_input('Enter the worst compactness', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+concavity_w = st.number_input('Enter the worst concavity', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+concave_points_w = st.number_input('Enter the worst concave points', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+symmetry_w = st.number_input('Enter the worst symmetry', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
+fractal_dimension_w = st.number_input('Enter the worst fractal dimension', min_value=min_value, max_value=max_value, step=1e-6, format="%.6f")
 
 input = np.array([radius_m,texture_m,perimeter_m,area_m,smoothness_m,compactness_m,concavity_m,concave_points_m,symmetry_m,fractal_dimension_m,
                  radius_se,texture_se,perimeter_se,area_se,smoothness_se,compactness_se,concavity_se,concave_points_se,symmetry_se,fractal_dimension_se,
@@ -67,8 +69,3 @@ if st.button('Classify'):
       st.write('The tumor is Malignant')
     else:
       st.write('The tumor is Benign')
-
-
-
-
-
