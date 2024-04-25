@@ -1,10 +1,10 @@
+import keras
 import streamlit as st
 import numpy as np
-import pickle 
 from sklearn.preprocessing import StandardScaler
 
 scaler = StandardScaler()
-model=pickle.load(open('./breastcancer_classification_model.pkl','rb'))
+model= keras.models.load.model('breastcancer_classification_model.h5')
 
 st.title("Breast Cancer Classification")
 
