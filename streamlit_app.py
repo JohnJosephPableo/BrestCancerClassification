@@ -4,6 +4,7 @@ import numpy as np
 from keras.models import load_model
 from sklearn.preprocessing import StandardScaler
 
+scaler = StandardScaler()
 model = load_model('./breastcancer_classification_model.h5')
 min_value = np.float32(np.finfo(np.float32).min)  
 max_value = np.float32(np.finfo(np.float32).max) 
@@ -57,11 +58,10 @@ fractal_dimension_w = st.number_input('Enter the worst fractal dimension',min_va
 input = np.array([radius_m,texture_m,perimeter_m,area_m,smoothness_m,compactness_m,concavity_m,concave_points_m,symmetry_m,fractal_dimension_m,
                  radius_se,texture_se,perimeter_se,area_se,smoothness_se,compactness_se,concavity_se,concave_points_se,symmetry_se,fractal_dimension_se,
                  radius_w,texture_w,perimeter_w,area_w,smoothness_w,compactness_w,concavity_w,concave_points_w,symmetry_w,fractal_dimension_w]) 
+input_data_reshaped = input.reshape(1,-1)
+input_data_std = scaler.transform(input_data_reshaped)
 
 if st.button('Classify'):
-    scaler = StandardScaler()
-    input_data_reshaped = input.reshape(1,-1)
-    input_data_std = scaler.transform(input_data_reshaped)
     prediction = model.predict(input_data_std)
     st.write(prediction)
     prediction_label = [np.argmax(prediction)]
@@ -69,3 +69,4 @@ if st.button('Classify'):
       st.write('The tumor is Malignant')
     else:
       st.write('The tumor is Benign')
+
