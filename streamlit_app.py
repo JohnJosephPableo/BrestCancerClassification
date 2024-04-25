@@ -1,10 +1,11 @@
 import keras
 import streamlit as st
 import numpy as np
+from keras.models import load_model
 from sklearn.preprocessing import StandardScaler
 
 scaler = StandardScaler()
-model= keras.models.load.model('breastcancer_classification_model.h5')
+model = load_model('./breastcancer_classification_model.h5')
 
 st.title("Breast Cancer Classification")
 
