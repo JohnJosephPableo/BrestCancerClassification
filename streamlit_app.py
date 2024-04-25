@@ -61,8 +61,6 @@ input = np.array([radius_m,texture_m,perimeter_m,area_m,smoothness_m,compactness
 if st.button('Classify'):
     scaler = StandardScaler()
     input_data_reshaped = input.reshape(1,-1)
-    if not hasattr(scaler, 'mean_') or not hasattr(scaler, 'scale_'):
-      scaler.fit(input_data_reshaped)
     input_data_std = scaler.transform(input_data_reshaped)
     prediction = model.predict(input_data_std)
     st.write(prediction)
@@ -71,3 +69,7 @@ if st.button('Classify'):
       st.write('The tumor is Malignant')
     else:
       st.write('The tumor is Benign')
+
+if st.button('test'):
+   st.write("test")
+else:
