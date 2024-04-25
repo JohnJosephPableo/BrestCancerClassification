@@ -1,4 +1,5 @@
 import streamlit as st
+import numpy as np
 
 st.title("Breast Cancer Classification")
 
@@ -46,13 +47,12 @@ concave_points_w = st.number_input('Enter the worst concave points')
 symmetry_w = st.number_input('Enter the worst symmetry')
 fractal_dimension_w = st.number_input('Enter the worst fractal dimension')
 
-input = np.array[radius_m,texture_m,perimeter_m,area_m,smoothness_m,compactness_m,concavity_m,concave_points_m,symmetry_m,fractal_dimension_m,
+input = np.array([radius_m,texture_m,perimeter_m,area_m,smoothness_m,compactness_m,concavity_m,concave_points_m,symmetry_m,fractal_dimension_m,
                  radius_se,texture_se,perimeter_se,area_se,smoothness_se,compactness_se,concavity_se,concave_points_se,symmetry_se,fractal_dimension_se,
-                 radius_w,texture_w,perimeter_w,area_w,smoothness_w,compactness_w,concavity_w,concave_points_w,symmetry_w,fractal_dimension_w] 
+                 radius_w,texture_w,perimeter_w,area_w,smoothness_w,compactness_w,concavity_w,concave_points_w,symmetry_w,fractal_dimension_w]) 
 
 if st.button('Classify'):
     st.write(input)
-else:
-    st.write('Goodbye')
+
 
 
