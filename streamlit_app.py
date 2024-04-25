@@ -18,7 +18,7 @@ st.write("""
 st.write("""
             Mean
          """)
-radius_m = st.number_input('Enter the mean radius',min_value=float(min_value), max_value=float(max_value), step=1e-6, format="%.6f")
+radius_m = st.number_input('Enter the mean radius',min_value=float(min_value), max_value=float(max_value), step=1e-6, format="%.6f", value=0.0)
 texture_m = st.number_input('Enter the mean texture',min_value=float(min_value), max_value=float(max_value), step=1e-6, format="%.6f")
 perimeter_m = st.number_input('Enter the mean perimeter',min_value=float(min_value), max_value=float(max_value), step=1e-6, format="%.6f")
 area_m = st.number_input('Enter the mean area',min_value=float(min_value), max_value=float(max_value), step=1e-6, format="%.6f")
